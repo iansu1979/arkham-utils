@@ -39,9 +39,11 @@ class PDFBuilder(object):
         twosided = [c for c in self.cards if len(c.images) == 2]
         onesided = [c for c in self.cards if len(c.images) == 1]
         for card in twosided:
-            self.layout_2side(layout, card)
+            for _ in range(card.quantity):
+                self.layout_2side(layout, card)
         for card in onesided:
-            self.layout_1side(layout, card)
+            for _ in range(card.quantity):
+                self.layout_1side(layout, card)
         return layout
 
     def layout_2side(self, layout, card: ArkhamCard):
