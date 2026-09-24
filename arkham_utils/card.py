@@ -16,3 +16,8 @@ class ArkhamCard(ABC):
     @abstractmethod
     def type(self):
         return 'Card'
+
+class ArkhamRawCard(ArkhamCard):
+    @property
+    def type(self):
+        return 'RawCard'

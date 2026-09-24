@@ -49,4 +49,4 @@ class OctgnImageDatabase(object):
         except KeyError:
             return front,
 
-image_db = OctgnImageDatabase(f'{user_data_dir('arkham_utils')}/o8c')
+image_db = OctgnImageDatabase(f'{user_data_dir("arkham_utils")}/o8c')

@@ -1,4 +1,4 @@
-from typing import Generator
+from typing import Generator, Callable
 import requests
 from arkham_utils.arkhamdb.card import ArkhamDBCard
 from arkham_utils.arkhamdb.constants import API
@@ -29,4 +29,9 @@ class ArkhamDBSet(object):
     def find_by_regex(self, regex: str | re.Pattern[str]) -> Generator[ArkhamDBCard, None, None]:
         for c in self.cards:
             if re.match(regex, c.name):
+                yield c
+
+    def find_by_predicate(self, predicate: Callable[[ArkhamDBCard], bool]) -> Generator[ArkhamDBCard, None, None]:
+        for c in self.cards:
+            if predicate(c):
                 yield c

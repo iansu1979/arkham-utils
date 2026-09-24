@@ -60,4 +60,4 @@ class OctgnSetDatabase(object):
     def find_set(self, regex):
         return next(self.find_all_sets(regex))
             
-db = OctgnSetDatabase(f'{user_data_dir('arkham_utils')}/o8g')
+db = OctgnSetDatabase(f'{user_data_dir("arkham_utils")}/o8g')

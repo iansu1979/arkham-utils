@@ -64,3 +64,24 @@ mini_cfg.card_height = 2.5
 mini_cfg.card_width = 1.625
 PDFBuilder([c for c in barkham.cards if c.type == 'Mini'], mini_cfg).write('barkham_minis.pdf')
 ```
+
+### Proxying a deck
+
+Download the taboo PDF from https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/ FAQ section.
+
+Download the Scarlet Keys Investigator upgrade sheets from the Player Resources section.
+
+```py
+from arkham_utils.arkhamdb.public_deck import ArkhamDBPublicDeck
+from arkham_utils.pdf.builder import PDFBuilder
+
+deck = ArkhamDBPublicDeck(ARKHAMDB_DECK_ID, 
+  taboo_pdf='chapter_one_taboo_cards_v25_web.pdf', 
+  customizable_pdf='ahc69_upgrades_v5.pdf', 
+  include_investigator=True, 
+  include_signature_cards=True,
+  use_octgn=True)
+
+pdf = PDFBuilder(deck.cards)
+pdf.write('deck.pdf')
+```

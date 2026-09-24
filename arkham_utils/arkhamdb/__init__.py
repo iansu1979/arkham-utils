@@ -1,5 +1,5 @@
 import re
-from typing import Generator
+from typing import Generator, Callable
 import requests
 from arkham_utils.arkhamdb.card import ArkhamDBCard
 from arkham_utils.arkhamdb.constants import API
@@ -45,6 +45,11 @@ class ArkhamDB(object):
 
     def search(self, regex: str) -> ArkhamDBCard:
         return next(self.find_all_cards(regex))
+    
+    def find_by_predicate(self, predicate: Callable[[ArkhamDBCard], bool]) -> Generator[ArkhamDBCard, None, None]:
+        for s in self.packs:
+            for c in s.find_by_predicate(predicate):
+                yield c
 
 
 db = ArkhamDB()
