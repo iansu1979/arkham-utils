@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "arkham-utils"
-version = "0.1.3"
+version = "0.2.0"
 description = "Arkham Horror LCG utilities"
 authors = ["Ian Su <iansu1979+github@gmail.com>"]
 readme = "README.md"
